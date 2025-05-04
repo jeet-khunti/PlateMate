@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2022 at 05:15 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: May 04, 2025 at 01:57 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `admin` (
   `id` int(100) NOT NULL,
   `name` varchar(20) NOT NULL,
   `password` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `admin`
@@ -54,7 +54,14 @@ CREATE TABLE `cart` (
   `price` int(10) NOT NULL,
   `quantity` int(10) NOT NULL,
   `image` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `user_id`, `pid`, `name`, `price`, `quantity`, `image`) VALUES
+(1, 1, 2, 'French Fries', 100, 3, 'delicious-fries-studio-min.jpg');
 
 -- --------------------------------------------------------
 
@@ -69,7 +76,7 @@ CREATE TABLE `messages` (
   `email` varchar(100) NOT NULL,
   `number` varchar(12) NOT NULL,
   `message` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -89,7 +96,7 @@ CREATE TABLE `orders` (
   `total_price` int(100) NOT NULL,
   `placed_on` date NOT NULL DEFAULT current_timestamp(),
   `payment_status` varchar(20) NOT NULL DEFAULT 'pending'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -103,7 +110,22 @@ CREATE TABLE `products` (
   `category` varchar(100) NOT NULL,
   `price` int(10) NOT NULL,
   `image` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `category`, `price`, `image`) VALUES
+(1, 'Burger', 'fast food', 100, 'view-delicious-burger-with-buns-cheese-min.jpg'),
+(2, 'French Fries', 'fast food', 100, 'delicious-fries-studio-min.jpg'),
+(3, 'Sandwich', 'fast food', 120, 'side-view-club-sandwich-with-salted-cucumbers-lemon-olives-round-white-plate-min.jpg'),
+(4, 'Spaghetti Bolognese', 'main dish', 200, 'spaghetti-saute-gray-plate-with-tomatoes-basil-min.jpg'),
+(5, 'Vegetable Stir-Fry with Tofu', 'main dish', 150, 'fried-vegetables-with-sauce-pan-min.jpg'),
+(6, 'Pink Lemonade', 'drinks', 150, 'close-up-refreshing-alcoholic-drink-with-grapefruit-min.jpg'),
+(7, 'Sunset Cooler', 'drinks', 150, 'tropical-juice-with-lots-ice-pineapple-slice-min.jpg'),
+(8, 'Tiramisu', 'desserts', 200, 'tiramisu-cake-with-cacao-powder-top-served-with-tea-min.jpg'),
+(9, 'Apple pie', 'desserts', 200, 'beautiful-delicious-warm-apple-pie-min.jpg');
 
 -- --------------------------------------------------------
 
@@ -118,7 +140,14 @@ CREATE TABLE `users` (
   `number` varchar(10) NOT NULL,
   `password` varchar(50) NOT NULL,
   `address` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `number`, `password`, `address`) VALUES
+(1, 'Jeet', 'example@gmail.com', '1234567890', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', '');
 
 --
 -- Indexes for dumped tables
@@ -174,7 +203,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -192,13 +221,13 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
